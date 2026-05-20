@@ -323,3 +323,23 @@ footer {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
+@media (max-width: 768px) {
+
+  .nav-wrap {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav {
+    justify-content: center;
+  }
+
+  .card img {
+    height: 180px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+}
