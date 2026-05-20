@@ -1,6 +1,3 @@
-
-
-
 // Feedback form submission
 document.addEventListener("DOMContentLoaded", function () {
     const feedbackForm = document.querySelector("form");
@@ -129,3 +126,10 @@ function checkout() {
     updateCart();
 }
 
+let cart = [];
+
+function addToCart(name, price) {
+  cart.push({ name, price });
+  console.log(cart);
+  alert(name + " added to cart!");
+}
