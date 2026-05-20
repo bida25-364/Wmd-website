@@ -287,7 +287,28 @@ footer {
   font-weight: 700;
   color: var(--primary);
 }
+#cart-items{
+    list-style:none;
+    padding:0;
+}
 
+#cart-items li{
+    background:#10233f;
+    padding:15px;
+    margin-bottom:10px;
+    border-radius:10px;
+}
+
+#cart-items button{
+    margin:5px;
+    padding:6px 12px;
+    cursor:pointer;
+}
+
+#cart-total{
+    color:#4fd1ff;
+    font-weight:bold;
+}
 /* section headings */
 .section h3 {
   color: var(--primary);
