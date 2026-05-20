@@ -31,10 +31,10 @@ img {
   max-width: 100%;
   display: block;
 }
-
 .container {
   width: min(1120px, 92%);
   margin: 0 auto;
+  padding-right: 340px;
 }
 
 header {
@@ -348,7 +348,7 @@ footer {
     right: 20px;
     top: 100px;
 
-    width: 300px;
+    width: 260px;
     max-height: 75vh;
 
     overflow-y: auto;
@@ -362,4 +362,27 @@ footer {
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 
     z-index: 999;
+}
+
+.cart-container h2{
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.cart-container p,
+.cart-container h3{
+    font-size: 0.95rem;
+}
+@media (max-width: 900px){
+
+    .container{
+        padding-right: 0;
+    }
+
+    .cart-container{
+        position: static;
+        width: 100%;
+        max-height: none;
+        margin-top: 20px;
+    }
 }
