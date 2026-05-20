@@ -344,15 +344,22 @@ footer {
 
 }
 .cart-container{
-    max-width: 700px;
-    margin: 40px auto;
-}
+    position: fixed;
+    right: 20px;
+    top: 100px;
 
-.order-btn {
-  background: #25D366;
-  border: none;
-}
+    width: 300px;
+    max-height: 75vh;
 
-.order-btn:hover {
-  background: #1ebe5d;
+    overflow-y: auto;
+
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+
+    padding: 15px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+
+    z-index: 999;
 }
