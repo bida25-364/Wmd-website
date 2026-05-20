@@ -1,3 +1,8 @@
+// Welcome message when the website opens
+window.onload = function () {
+    alert("Welcome to Urban Eats! We hope you enjoy our menu and dining experience.");
+};
+
 // Feedback form submission
 document.addEventListener("DOMContentLoaded", function () {
     const feedbackForm = document.querySelector("form");
@@ -12,8 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
-
-
 
 let cart = [];
 let total = 0;
