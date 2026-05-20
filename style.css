@@ -348,3 +348,11 @@ footer {
     margin: 40px auto;
 }
 
+.order-btn {
+  background: #25D366;
+  border: none;
+}
+
+.order-btn:hover {
+  background: #1ebe5d;
+}
