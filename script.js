@@ -1,28 +1,33 @@
-alert("script.js loaded");
-// Feedback form submission
+// Wait until page is loaded
 document.addEventListener("DOMContentLoaded", function () {
+
+    // Feedback form handling
     const feedbackForm = document.querySelector("form");
 
     if (feedbackForm) {
         feedbackForm.addEventListener("submit", function (event) {
             event.preventDefault();
 
-            alert("Thank you for your feedback! We appreciate your support and look forward to serving you again at Urban Eats.");
+            alert(
+                "Thank you for your feedback! We appreciate your support and look forward to serving you again at Urban Eats."
+            );
 
             feedbackForm.reset();
         });
     }
 });
 
+// Shopping Cart
 let cart = [];
 let total = 0;
 
-// Add Item
+// Add item to cart
 function addToCart(name, price) {
-    const existing = cart.find(item => item.name === name);
 
-    if (existing) {
-        existing.quantity++;
+    const existingItem = cart.find(item => item.name === name);
+
+    if (existingItem) {
+        existingItem.quantity++;
     } else {
         cart.push({
             name: name,
@@ -32,10 +37,13 @@ function addToCart(name, price) {
     }
 
     updateCart();
+
+    alert(name + " added to cart!");
 }
 
-// Increase Quantity
+// Increase quantity
 function increaseQuantity(name) {
+
     const item = cart.find(item => item.name === name);
 
     if (item) {
@@ -45,60 +53,67 @@ function increaseQuantity(name) {
     updateCart();
 }
 
-// Decrease Quantity
+// Decrease quantity
 function decreaseQuantity(name) {
+
     const item = cart.find(item => item.name === name);
 
     if (item) {
         item.quantity--;
 
         if (item.quantity <= 0) {
-            cart = cart.filter(cartItem => cartItem.name !== name);
+            removeItem(name);
+            return;
         }
     }
 
     updateCart();
 }
 
-// Remove Item
+// Remove item completely
 function removeItem(name) {
+
     cart = cart.filter(item => item.name !== name);
 
     updateCart();
 }
 
-// Update Cart Display
+// Update cart display
 function updateCart() {
+
     const cartItems = document.getElementById("cart-items");
     const cartCount = document.getElementById("cart-count");
     const cartTotal = document.getElementById("cart-total");
 
-    cartItems.innerHTML = "";
+    // Stop if cart elements do not exist
+    if (!cartItems || !cartCount || !cartTotal) {
+        return;
+    }
 
+    cartItems.innerHTML = "";
     total = 0;
 
     cart.forEach(item => {
-        total += item.price * item.quantity;
+
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
 
         cartItems.innerHTML += `
-        <li>
-            <strong>${item.name}</strong><br>
+            <li>
+                <strong>${item.name}</strong><br>
+                P${item.price} × ${item.quantity} = P${itemTotal}
+                <br><br>
 
-            P${item.price} × ${item.quantity}
-            = P${item.price * item.quantity}
+                <button onclick="decreaseQuantity('${item.name}')">−</button>
 
-            <br><br>
+                <button onclick="increaseQuantity('${item.name}')">+</button>
 
-            <button onclick="decreaseQuantity('${item.name}')">-</button>
+                <button onclick="removeItem('${item.name}')">
+                    Remove
+                </button>
 
-            <button onclick="increaseQuantity('${item.name}')">+</button>
-
-            <button onclick="removeItem('${item.name}')">
-                Remove
-            </button>
-
-            <hr>
-        </li>
+                <hr>
+            </li>
         `;
     });
 
@@ -118,19 +133,24 @@ function checkout() {
         return;
     }
 
+    let orderSummary = "Your Order:\n\n";
+
+    cart.forEach(item => {
+        orderSummary +=
+            `${item.name} x${item.quantity} - P${item.price * item.quantity}\n`;
+    });
+
+    orderSummary += `\nTotal: P${total}`;
+
     alert(
         "Thank you for ordering from Urban Eats!\n\n" +
-        "Total Amount: P" + total
+        orderSummary
     );
 
     cart = [];
     updateCart();
 }
 
-let cart = [];
+   
 
-function addToCart(name, price) {
-  cart.push({ name, price });
-  console.log(cart);
-  alert(name + " added to cart!");
-}
+
