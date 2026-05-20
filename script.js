@@ -1,3 +1,4 @@
+alert("script.js loaded");
 // Feedback form submission
 document.addEventListener("DOMContentLoaded", function () {
     const feedbackForm = document.querySelector("form");
