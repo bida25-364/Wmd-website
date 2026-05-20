@@ -1,8 +1,3 @@
-// Welcome Message
-window.onload = function () {
-    alert("Welcome to Urban Eats!");
-};
-
 let cart = [];
 let total = 0;
 
